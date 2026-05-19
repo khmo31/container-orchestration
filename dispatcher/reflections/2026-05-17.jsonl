@@ -1,0 +1,2 @@
+{"timestamp":"2026-05-17T15:04:39.027Z","request_id":"req_mp9woxhl_7ig5of","policy_id":"default_direct","intent":["unknown"],"confidence":0.95,"success":true,"duration_ms":4073,"fallback_used":false,"error":null,"escalation_triggered":false}
+{"timestamp":"2026-05-17T15:11:20.883Z","request_id":"req_mp9wx7o9_c690q8","policy_id":"bug_short_circuit","intent":["bug"],"confidence":0.9,"success":false,"duration_ms":18498,"fallback_used":true,"error":null,"escalation_triggered":true,"agent_id":"ejclaw","fallback_agent_id":"hermes"}

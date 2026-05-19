@@ -1,0 +1,77 @@
+{
+  "last_updated": "2026-05-17T15:11:20.886Z",
+  "agents": {
+    "ejclaw": {
+      "executions": 1,
+      "successes": 0,
+      "failures": 1,
+      "avg_duration_ms": 18498,
+      "quality_score": 0,
+      "quality_weight": 1
+    },
+    "hermes": {
+      "executions": 1,
+      "successes": 0,
+      "failures": 1,
+      "avg_duration_ms": 18498,
+      "quality_score": 0,
+      "quality_weight": 1
+    }
+  },
+  "policies": {
+    "default_direct": {
+      "executions": 1,
+      "successes": 1,
+      "failures": 0,
+      "avg_duration_ms": 4073,
+      "fallbacks": 0,
+      "quality_score": 1,
+      "quality_weight": 1
+    },
+    "bug_short_circuit": {
+      "executions": 1,
+      "successes": 0,
+      "failures": 1,
+      "avg_duration_ms": 18498,
+      "fallbacks": 1,
+      "quality_score": 0,
+      "quality_weight": 1
+    }
+  },
+  "intents": {
+    "unknown": {
+      "executions": 1,
+      "successes": 1,
+      "failures": 0,
+      "quality_score": 1,
+      "quality_weight": 1
+    },
+    "bug": {
+      "executions": 1,
+      "successes": 0,
+      "failures": 1,
+      "quality_score": 0,
+      "quality_weight": 1
+    }
+  },
+  "time_analysis": {
+    "by_hour": {
+      "15": {
+        "executions": 2,
+        "successes": 1,
+        "failures": 1
+      }
+    },
+    "by_day": {
+      "Sun": {
+        "executions": 2,
+        "successes": 1,
+        "failures": 1
+      }
+    }
+  },
+  "total_executions": 2,
+  "total_successes": 1,
+  "total_failures": 1,
+  "total_quality": 0.5
+}

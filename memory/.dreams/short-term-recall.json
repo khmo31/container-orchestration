@@ -1,0 +1,467 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-17T15:24:42.473Z",
+  "entries": {
+    "memory:memory/2026-05-15.md:1:32": {
+      "key": "memory:memory/2026-05-15.md:1:32",
+      "path": "memory/2026-05-15.md",
+      "startLine": 1,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "# 2026-05-15 Daily Notes ## Project: auto_investment (한국 주식 자동투자) ### Setup 완료 - GitHub `khmo31/auto_investment` repo 접근 설정 (Fine-Grained PAT → repo:read) - 서브모듈 해제 → TradingAgents 일반 파일로 변환 → GitHub push - khmoserver에 Docker 컨테이너 환경 구성 완료 ### Phase 0-5 구현 완료 - **Phase 0**: 한국 시장 패치 (pykrx 기반 OHLCV, 뉴스, 펀더멘탈) - **Phase 1**: KOSPI/KOSDAQ 스캐너 (PER<10, PBR<1, 20MA + 거래량 급증) - **Phase 2**: 포트폴리오/예수금 관리 (KRW 기반, 20% 안전마진, 손익 추적) - **Phase 3**: LLM 에이전트 한국어/국장 최적화 (시장 컨텍스트, 업종 매핑) - **Phase 4**: 리스크 관리 (기계적 손절 -5%, 익절 +15%, 트레일링 스탑 -3%) - **Phase 5**: 파이프라인 + 크론 (일일 리포트 → 텔레그램) ### 진행 중 - LLM Provider: GitHub Copilot Pro로 전환 중 - Copilot Pro 모델 ID 확인 완료 (gpt-5.5, gpt-5.4-mini, claude-opus-4.7 등",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-15T06:22:57.990Z",
+      "lastRecalledAt": "2026-05-16T03:28:29.840Z",
+      "queryHashes": [
+        "0d6810d685c1",
+        "9b0975faa28d"
+      ],
+      "recallDays": [
+        "2026-05-15",
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "gpt",
+        "auto-investment",
+        "khmo31/auto-investment",
+        "fine-grained",
+        "0-5",
+        "kospi/kosdaq",
+        "포트폴리오/예수금",
+        "한국어/국장"
+      ]
+    },
+    "memory:memory/2026-05-15.md:100:136": {
+      "key": "memory:memory/2026-05-15.md:100:136",
+      "path": "memory/2026-05-15.md",
+      "startLine": 100,
+      "endLine": 136,
+      "source": "memory",
+      "snippet": "model_catalog.py 업데이트는 exec 또는 sessions_spawn으로 처리 예정. ─── 세션 종료 직전 ─── model_catalog.py 업데이트 완료. Copilot 섹션 교체, gpt-5.4-mini (quick), gpt-5.5 (deep) 기본값. default_config.py provider github-copilot, 모델 gpt-5.5/gpt-5.4-mini로 변경. docker-compose.yml GITHUB_TOKEN env 추가. git add/commit/push 완료. ✅ 최종 완료. model_catalog.py github-copilot 섹션 실제 Copilot Pro 모델 ID로 교체 완료: quick: - gpt-5.4-mini (GPT-5.4 Mini) - gpt-5.4-nano (GPT-5.4 Nano) - claude-sonnet-4-6 (Claude Sonnet 4.6) - claude-haiku-4-5 (Claude Haiku 4.5) - gemini-2.5-flash (Gemini 2.5 Flash) deep: - gpt-5.5 (GPT-5.5 – 1M ctx) - claude-opus-4-7 (Claude Opus 4.7) - claude-sonnet-4-6 (Claude Sonnet 4.6) - gemini-3.1-pro (Gemini 3.1 Pro) - gro",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6326685447978101,
+      "maxScore": 0.6326685447978101,
+      "firstRecalledAt": "2026-05-16T03:28:29.840Z",
+      "lastRecalledAt": "2026-05-16T03:28:29.840Z",
+      "queryHashes": [
+        "9b0975faa28d"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "gpt",
+        "model-catalog.py",
+        "sessions-spawn으로",
+        "gpt-5.4-mini",
+        "gpt-5.5",
+        "default-config.py",
+        "github-copilot",
+        "gpt-5.5/gpt-5.4-mini로"
+      ]
+    },
+    "memory:memory/2026-05-15.md:24:56": {
+      "key": "memory:memory/2026-05-15.md:24:56",
+      "path": "memory/2026-05-15.md",
+      "startLine": 24,
+      "endLine": 56,
+      "source": "memory",
+      "snippet": "- GITHUB_TOKEN (Copilot 인증) - TRADINGAGENTS_LLM_PROVIDER=github-copilot - TRADINGAGENTS_OUTPUT_LANGUAGE=Korean - TRADINGAGENTS_BENCHMARK_TICKER=^KS11 - TRADINGAGENTS_DATA_VENDOR=korea ### 특징 - 모두 API 호출 기반이라 서버 부하 거의 없음 (LLM 추론은 외부 API) - 전기세 월 3~5천 원 - i5-4200U 노트북 24시간으로 충분 ## GitHub Copilot Provider 모델 카탈로그 업데이트 필요 (2026-05-15, ~05:46) TradingAgents model_catalog.py의 `github-copilot` 섹션을 실제 Copilot Pro API 모델 ID로 교체해야 함. **Copilot Pro 실제 지원 모델 (2026.05):** - gpt-5.5, gpt-5.4-mini, gpt-5.4-nano, gpt-5.3-codex, gpt-5-mini (종료예정: gpt-4.1, gpt-5.2, gpt-5.2-codex) - claude-opus-4.7, claude-opus-4.6, claude-opus-4.5, claude-sonnet-4.6, claude-sonnet-4.5, claude-haiku-4.5, claude-opus-4.6-fa",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6320426264907532,
+      "maxScore": 0.6320426264907532,
+      "firstRecalledAt": "2026-05-16T03:28:29.840Z",
+      "lastRecalledAt": "2026-05-16T03:28:29.840Z",
+      "queryHashes": [
+        "9b0975faa28d"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "gpt",
+        "github-token",
+        "tradingagents-llm-provider",
+        "github-copilot",
+        "tradingagents-output-language",
+        "tradingagents-benchmark-ticker",
+        "tradingagents-data-vendor",
+        "i5-4200u"
+      ]
+    },
+    "memory:memory/2026-05-15.md:49:82": {
+      "key": "memory:memory/2026-05-15.md:49:82",
+      "path": "memory/2026-05-15.md",
+      "startLine": 49,
+      "endLine": 82,
+      "source": "memory",
+      "snippet": "**할 일:** exec로 model_catalog.py 직접 수정, default_config.py 기본값을 github-copilot/gpt-5.5로 변경 ## auto_investment model_catalog.py — Copilot 섹션 교체 완료 (05:46 UTC) 실제 Copilot API 모델 ID로 model_catalog.py github-copilot 섹션 업데이트 완료. default_config.py도 github-copilot / gpt-5.5 기본값으로 변경 완료. 최종 push까지 완료. ## 조직 구조 정립 (06:18-06:22 UTC) khmo가 조직 구조를 명확히 정의함: ``` 👑 khmo (사장/귀족) → 최종 결과만 확인 └─ 🦀 Claw (비서/시종장) → 판단, 지시, 보고 총괄 ├─ 🧑‍💻 헤르메스 (신입사원) → 더 좋은 모델, 복잡한 작업 처리 └─ 🏗️ tradingagent 등 컨테이너들 ``` ### 역할 - **khmo**: \"이거 해\"만 던짐. 결과만 봄. - **Claw (나)**: 직접 처리 or 헤르메스/컨테이너에 위임 판단. 결과 검토/요약/보고. - **헤르메스**: Claw 지시대로 작업. 장기기억 보유. 더 좋은 모델(kimi-k2.6). ### MEMORY.md 생성 완료 - /home/khmo31/.openc",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6319246551128388,
+      "maxScore": 0.6319246551128388,
+      "firstRecalledAt": "2026-05-16T03:28:29.840Z",
+      "lastRecalledAt": "2026-05-16T03:28:29.840Z",
+      "queryHashes": [
+        "9b0975faa28d"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "gpt",
+        "model-catalog.py",
+        "default-config.py",
+        "github-copilot/gpt-5.5로",
+        "auto-investment",
+        "github-copilot",
+        "default-config.py도",
+        "gpt-5.5"
+      ]
+    },
+    "memory:memory/2026-05-15.md:73:105": {
+      "key": "memory:memory/2026-05-15.md:73:105",
+      "path": "memory/2026-05-15.md",
+      "startLine": 73,
+      "endLine": 105,
+      "source": "memory",
+      "snippet": "### MEMORY.md 생성 완료 - /home/khmo31/.openclaw/workspace/MEMORY.md 에 구조 정의 저장 ### 헤르메스 인지 완료 - 헤르메스 컨테이너 실행 중 (localhost:8000) - /chat API로 구조/역할 전달 → 장기기억 저장 확인 응답 - 모델: kimi-k2.6 ## 추가 생각 Copilot Pro 모델 ID는 Copilot API의 `/v1/models` 엔드포인트 응답을 기준으로 해야 함. gpt-5.5, claude-sonnet-4-6 등은 Copilot 내부 alias일 가능성 있음. 확실한 건 Copilot API 호출로 /v1/models 해보거나, gh copilot --model-list 같은 명령어로 직접 확인하는 게 정확함. gh copilot --model-list (gh CLI) 사용 가능하면 실행해볼 것. ─── session이 compaction되기 전 마지막 flush 완료. 저장소: https://github.com/khmo31/auto_investment 다음 단계: 1. model_catalog.py Copilot 섹션 실제 모델 ID로 교체 2. default_config.py 기본값 github-copilot/gpt-5.5로 변경 3. git push 4. 실제 GITHUB_TOKEN 넣고 테스트 실행 ─── 최종 flush ──",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6316410866265028,
+      "maxScore": 0.6316410866265028,
+      "firstRecalledAt": "2026-05-16T03:28:29.840Z",
+      "lastRecalledAt": "2026-05-16T03:28:29.840Z",
+      "queryHashes": [
+        "9b0975faa28d"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "gpt",
+        "memory.md",
+        "home/khmo31",
+        "openclaw/workspace/memory.md",
+        "구조/역할",
+        "kimi-k2.6",
+        "v1/models",
+        "gpt-5.5"
+      ]
+    },
+    "memory:memory/2026-05-15.md:1:13": {
+      "key": "memory:memory/2026-05-15.md:1:13",
+      "path": "memory/2026-05-15.md",
+      "startLine": 1,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "# 2026-05-15 ## Optimizations - `openclaw/.git` 삭제 (1.2GB 확보) - `hermes/` 중복 디렉토리 삭제 (289MB 확보) - CPU governor 모두 `powersave`로 설정 - TLP 저전력 drop-in 설정 적용 (`/etc/tlp.d/01-lowpower.conf`) - 부스트 오프, 최대 클럭 50%(AC) / 30%(BAT) 제한 - ollama 확인 결과 이미 제거됨 ## Credentials - sudo 비밀번호를 TOOLS.md에 저장함",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T10:38:06.742Z",
+      "lastRecalledAt": "2026-05-16T10:38:06.742Z",
+      "queryHashes": [
+        "e0a8e6bf5452"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "1.2gb",
+        "drop-in",
+        "etc/tlp.d/01-lowpower.conf",
+        "tools.md에",
+        "optimizations",
+        "openclaw",
+        "git",
+        "삭제"
+      ]
+    },
+    "memory:memory/2026-05-16.md:106:134": {
+      "key": "memory:memory/2026-05-16.md:106:134",
+      "path": "memory/2026-05-16.md",
+      "startLine": 106,
+      "endLine": 134,
+      "source": "memory",
+      "snippet": "## MetaGPT + EJClaw + gstack 통합 프로젝트 — Phase 1 진행중 ### 최종 아키텍처 결정사항 **컨테이너 구성:** - MetaGPT 컨테이너 → Copilot Edu Pro (GitHub Models API) → GPT-5.4-mini-high - EJClaw 컨테이너 → OpenCode Go → DeepSeek V4 Pro → GLM-5.1 → Qwen3.6 Plus → Kimi K2.6 - 두 컨테이너는 각각 격리, Docker 네트워크(aifactory-net)로 연결, 공유 볼륨(workspace-data)으로 설계서/코드 교환 **최종 모델 매트릭스 (2026-05-16 확정):** | 역할 | 모델 | Provider | |------|------|----------| | MetaGPT PM/Architect | GPT-5.4-mini-high | Copilot Edu Pro | | EJClaw Owner | GLM-5.1 | OpenCode Go | | EJClaw Reviewer | Qwen3.6 Plus | OpenCode Go | | EJClaw Arbiter | Kimi K2.6 | OpenCode Go | | QA/테스트 | GPT-5.3-Codex | Copilot Edu Pro | - Reviewer를 V4 Flash에서 Qwen3.6 Plus로 업그레이드 (khmo 판",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.2634807238004373,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T12:05:04.954Z",
+      "lastRecalledAt": "2026-05-17T08:07:28.765Z",
+      "queryHashes": [
+        "3b785cb11174",
+        "f6320facae9f",
+        "dfa1e0c3956f",
+        "43c6bf5af19b"
+      ],
+      "recallDays": [
+        "2026-05-16",
+        "2026-05-17"
+      ],
+      "conceptTags": [
+        "gpt",
+        "네트워크",
+        "gpt-5.4-mini-high",
+        "glm-5.1",
+        "qwen3.6",
+        "k2.6",
+        "aifactory-net",
+        "workspace-data"
+      ]
+    },
+    "memory:memory/2026-05-16.md:44:73": {
+      "key": "memory:memory/2026-05-16.md:44:73",
+      "path": "memory/2026-05-16.md",
+      "startLine": 44,
+      "endLine": 73,
+      "source": "memory",
+      "snippet": "- EJClaw (외주 개발팀) - Bun 기반, Owner/Reviewer/Arbiter 3인 Tribunal - gstack (엘리트 두뇌) - Garry Tan의 23개 Claude Code Skill, 엘리트 프롬프트 팩 - OpenClaw (Claw = 나) - 트리아지/오케스트레이션/ENV 관리 **아키텍처 문서 작성:** workspace/ARCHITECTURE_metaGPT_EJClaw_gstack.md **다음 단계:** khmo 리뷰 후 Phase 1 구현 시작 ## MetaGPT + EJClaw + gstack - Architecture Update ### 수정 사항 (khmo 피드백 반영) 1. **API 호환성**: OpenCode Go (DeepSeek V4 Pro/Flash) + Copilot Edu Pro 모두 대응 2. **컨테이너**: MetaGPT (Python) + EJClaw (Bun) 각각 격리, Docker 네트워크로 연결, 공유 볼륨으로 통신 3. **모델 매트릭스**: 역할별 최적 모델 지정 - 기획/설계/코딩/중재 → DeepSeek V4 Pro (OpenCode Go) - 리뷰/QA/일상 → DeepSeek V4 Flash (OpenCode Go) - Copilot Edu Pro는 GPT-5.3-Codex, Claude Opus 4.6 등 2순위로 4. **BLO",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.9601335536414033,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T12:05:04.954Z",
+      "lastRecalledAt": "2026-05-17T08:07:28.765Z",
+      "queryHashes": [
+        "3b785cb11174",
+        "2abc149e20fd",
+        "43c6bf5af19b"
+      ],
+      "recallDays": [
+        "2026-05-16",
+        "2026-05-17"
+      ],
+      "conceptTags": [
+        "gpt",
+        "네트워크",
+        "owner/reviewer/arbiter",
+        "트리아지/오케스트레이션/env",
+        "pro/flash",
+        "기획/설계/코딩/중재",
+        "리뷰/qa/일상",
+        "gpt-5.3-codex"
+      ]
+    },
+    "memory:memory/2026-05-16.md:127:151": {
+      "key": "memory:memory/2026-05-16.md:127:151",
+      "path": "memory/2026-05-16.md",
+      "startLine": 127,
+      "endLine": 151,
+      "source": "memory",
+      "snippet": "- OpenCode Go($10/mo) + Copilot Edu Pro(보유) — 추가 결제 없음 **BLOCKED/HITL 설정:** - 동일 BLOCKED 반복 임계값: 2회 (3→2로 하향) - 4가지 HITL 케이스: ENV 부족 / Arbiter ESCALATE / 반복 BLOCKED 루프 / 비용 한도 - Arbiter 판결 옵션: PROCEED, REVISE, RESET, ESCALATE **second_brain + Hermes 역할 정립:** - second_brain = 회사 문서 보관함 (외부 문서 구조화, 분류/링크, 그래프) - Hermes = 문서 보관함 관리자 + 과거 맥락 기억 - AI Factory 산출물(PRD, 설계서, 코드 diff)은 전부 second_brain에 기록 - 기록 명령은 Claw → Hermes로 전달 (Khmo 직접 기록 요청 불필요) ### Phase 1 진행 상태 - ✅ 아키텍처 문서 v3 완성 (workspace/ARCHITECTURE_metaGPT_EJClaw_gstack.md) - ✅ docker-compose.yml (MetaGPT + EJClaw, network + shared volume) - ✅ MetaGPT Dockerfile + entrypoint + config (Copilot API) - ✅ EJClaw Dockerfile + entrypoint + r",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.250458237138552,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T12:05:04.954Z",
+      "lastRecalledAt": "2026-05-17T15:24:42.473Z",
+      "queryHashes": [
+        "3b785cb11174",
+        "dfa1e0c3956f",
+        "43c6bf5af19b",
+        "cbe2759c79cd",
+        "1295ea2c06cd"
+      ],
+      "recallDays": [
+        "2026-05-16",
+        "2026-05-17"
+      ],
+      "conceptTags": [
+        "gpt",
+        "network",
+        "10/mo",
+        "blocked/hitl",
+        "second-brain",
+        "분류/링크",
+        "second-brain에",
+        "docker-compose.yml"
+      ]
+    },
+    "memory:memory/2026-05-16.md:82:112": {
+      "key": "memory:memory/2026-05-16.md:82:112",
+      "path": "memory/2026-05-16.md",
+      "startLine": 82,
+      "endLine": 112,
+      "source": "memory",
+      "snippet": "6. **API URL 수정** — `openapi/service/rest/RecruitService/getRecruitList` → `new/v1/recruit/list.do` ### 트러블슈팅 - `--mock` 인자 버그 (boolean vs string 비교) → `!inputs.mock`으로 수정 - `ALIO_ENDPOINT` 기본값 누락 → workflow env에 기본 URL 추가 - GITHUB_TOKEN write 권한 누락 → `permissions: contents: write` 추가 - 분석 단계 Groq 미연동 → analyzer.py에 groq provider 추가, `LLM_PROVIDER=groq` 설정 ### 비용 최적화 전략 - Groq `llama-4-scout-17b-16e-instruct` 사용 (TPM 300K, $0.11/M tok) - `DETAIL_MAX_DETAIL_CALLS=50` (50건만 상세 분석) - `ANALYSIS_MIN_CHARS_TO_CALL_LLM=300` (300자 이상만 LLM 호출) - `NCS_FILTER_MODE=off` (범용, 필터 없음) - 예상 비용: ~$0.25/회 (무료 크레딧 커버) ### 현재 repo 상태 - job_wiki: 999건 공고 수집 완료 (cleanup으로 19건 만료 정리) - ALIO API 실제 연결 성공 - 매주 월요",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.9378627542892617,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T12:05:04.954Z",
+      "lastRecalledAt": "2026-05-16T13:29:41.769Z",
+      "queryHashes": [
+        "3b785cb11174",
+        "2abc149e20fd",
+        "f6320facae9f"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "new/v1/recruit/list.do",
+        "inputs.mock",
+        "alio-endpoint",
+        "github-token",
+        "analyzer.py에",
+        "llm-provider",
+        "llama-4-scout-17b-16e-instruct",
+        "0.11/m"
+      ]
+    },
+    "memory:memory/2026-05-16.md:63:87": {
+      "key": "memory:memory/2026-05-16.md:63:87",
+      "path": "memory/2026-05-16.md",
+      "startLine": 63,
+      "endLine": 87,
+      "source": "memory",
+      "snippet": "- Arbiter ESCALATE → khmo 결정 - 반복 BLOCKED 루프 감지 → 자동 보고 - 비용 한도 도달 → fallback 제안 ### 문서 위치 - workspace/ARCHITECTURE_metaGPT_EJClaw_gstack.md (v2) # 2026-05-16 Daily Log ## job_wiki 파이프라인 구축 완료 🦀 ### 자동화 범위 (최종) GitHub Actions 파이프라인이 **수집 → 분석 → Wiki 변환 → 온톨로지 병합 → 만료 정리 → 푸시**까지 전부 자동으로 돌아가게 됨. ### 주요 변경사항 1. **merge_ontology.py** — Suggested_Keywords.json → Ontology_Map.json 자동 병합 스크립트 2. **cleanup_expired.py** — ALIO API `pbancEndYmd` 기준 만료 공고 자동 정리 (Raw, Archive, Index, Wiki Analysis, Company Profile 전부) 3. **llm_client.py** — 온톨로지 컨텍스트 포함하도록 프롬프트 강화 4. **harvest.yml** — 4-step 워크플로우 (cleanup → harvest → wiki → merge → push) 5. **analyzer.py** — Groq provider 지원 추가 (기존엔 nvid",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.4436392113015755,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T12:05:04.954Z",
+      "lastRecalledAt": "2026-05-16T13:29:41.769Z",
+      "queryHashes": [
+        "3b785cb11174",
+        "2abc149e20fd",
+        "6808948a21c0",
+        "f6320facae9f"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "gpt",
+        "job-wiki",
+        "merge-ontology.py",
+        "suggested-keywords.json",
+        "ontology-map.json",
+        "cleanup-expired.py",
+        "llm-client.py",
+        "harvest.yml"
+      ]
+    },
+    "memory:memory/2026-05-16.md:1:24": {
+      "key": "memory:memory/2026-05-16.md:1:24",
+      "path": "memory/2026-05-16.md",
+      "startLine": 1,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "# 2026-05-16 Daily Log ## job_wiki 파이프라인 구축 완료 🦀 ### 자동화 범위 (최종) GitHub Actions 파이프라인이 **수집 → 분석 → Wiki 변환 → 온톨로지 병합 → 만료 정리 → 푸시**까지 전부 자동으로 돌아가게 됨. ### 주요 변경사항 1. **merge_ontology.py** — Suggested_Keywords.json → Ontology_Map.json 자동 병합 스크립트 2. **cleanup_expired.py** — ALIO API `pbancEndYmd` 기준 만료 공고 자동 정리 (Raw, Archive, Index, Wiki Analysis, Company Profile 전부) 3. **llm_client.py** — 온톨로지 컨텍스트 포함하도록 프롬프트 강화 4. **harvest.yml** — 4-step 워크플로우 (cleanup → harvest → wiki → merge → push) 5. **analyzer.py** — Groq provider 지원 추가 (기존엔 nvidia/openai만 있음) 6. **API URL 수정** — `openapi/service/rest/RecruitService/getRecruitList` → `new/v1/recruit/list.do` ### 트러블슈팅 - `--mock` 인자 버그 (boolean vs s",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.4397314870109095,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T12:05:04.954Z",
+      "lastRecalledAt": "2026-05-16T13:29:41.769Z",
+      "queryHashes": [
+        "3b785cb11174",
+        "2abc149e20fd",
+        "6808948a21c0",
+        "f6320facae9f"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "openai",
+        "job-wiki",
+        "merge-ontology.py",
+        "suggested-keywords.json",
+        "ontology-map.json",
+        "cleanup-expired.py",
+        "llm-client.py",
+        "harvest.yml"
+      ]
+    },
+    "memory:memory/2026-05-16.md:146:174": {
+      "key": "memory:memory/2026-05-16.md:146:174",
+      "path": "memory/2026-05-16.md",
+      "startLine": 146,
+      "endLine": 174,
+      "source": "memory",
+      "snippet": "- 🔄 MetaGPT 컨테이너 빌드중 (pip install metagpt 백트래킹 이슈 해결중) - ⏳ EJClaw 컨테이너 빌드 대기 ### 미완료/보류 - Gemini 2.5 Pro / 3.1 Pro → Copilot Edu Pro에서 공식 지원되는지 불확실. 보류. - Hermes ↔ second_brain 연결 설정 (AI Factory 공유 볼륨 마운트) — Phase 2로 연기 - gstack 프롬프트 이식 (PM/Reviewer/Architect) — Phase 2로 예정 ## Session 종료 (13:26 KST) — 전체 완료 ### 오늘 한 일 **Phase 1-3 전체 구축 완료** — AI Factory (MetaGPT + EJClaw + gstack + OpenClaw + Hermes) 1. **컨테이너 3개 구축** - aifactory-metagpt (3.3GB) — 기획/설계/QA, DeepSeek V4 Pro - aifactory-ejclaw (2.54GB) — 구현/리뷰, GLM-5.1/Qwen3.6 Plus/Kimi K2.6 - hermes (기존) — 문서 관리, DeepSeek V4 Flash 2. **Provider 설정** - OpenCode Go ($10/mo) — 모든 메인 작업 - Copilot Edu Pro (보유) — QA 전용 - Git",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.3969577403502123,
+      "maxScore": 0.751095940351576,
+      "firstRecalledAt": "2026-05-16T13:28:04.292Z",
+      "lastRecalledAt": "2026-05-17T15:24:42.473Z",
+      "queryHashes": [
+        "2abc149e20fd",
+        "f6320facae9f",
+        "dfa1e0c3956f",
+        "cbe2759c79cd",
+        "1295ea2c06cd"
+      ],
+      "recallDays": [
+        "2026-05-16",
+        "2026-05-17"
+      ],
+      "conceptTags": [
+        "gpt",
+        "미완료/보류",
+        "2.5",
+        "3.1",
+        "second-brain",
+        "pm/reviewer/architect",
+        "1-3",
+        "aifactory-metagpt"
+      ]
+    },
+    "memory:memory/2026-05-16.md:19:49": {
+      "key": "memory:memory/2026-05-16.md:19:49",
+      "path": "memory/2026-05-16.md",
+      "startLine": 19,
+      "endLine": 49,
+      "source": "memory",
+      "snippet": "- GITHUB_TOKEN write 권한 누락 → `permissions: contents: write` 추가 - 분석 단계 Groq 미연동 → analyzer.py에 groq provider 추가, `LLM_PROVIDER=groq` 설정 ### 비용 최적화 전략 - Groq `llama-4-scout-17b-16e-instruct` 사용 (TPM 300K, $0.11/M tok) - `DETAIL_MAX_DETAIL_CALLS=50` (50건만 상세 분석) - `ANALYSIS_MIN_CHARS_TO_CALL_LLM=300` (300자 이상만 LLM 호출) - `NCS_FILTER_MODE=off` (범용, 필터 없음) - 예상 비용: ~$0.25/회 (무료 크레딧 커버) ### 현재 repo 상태 - job_wiki: 999건 공고 수집 완료 (cleanup으로 19건 만료 정리) - ALIO API 실제 연결 성공 - 매주 월요일 09:00 KST 자동 실행 ### 주요 레퍼런스 - ALIO API URL: `https://opendata.alio.go.kr/new/v1/recruit/list.do` - Groq 모델: https://console.groq.com/docs/models ## MetaGPT + EJClaw + gstack 통합 프로젝트 khmo가 공유한 문서 기반으로 세 가지 오픈소스를 결합하는 아키텍",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1,
+      "maxScore": 1,
+      "firstRecalledAt": "2026-05-16T13:29:41.769Z",
+      "lastRecalledAt": "2026-05-16T13:29:41.769Z",
+      "queryHashes": [
+        "f6320facae9f"
+      ],
+      "recallDays": [
+        "2026-05-16"
+      ],
+      "conceptTags": [
+        "gpt",
+        "github-token",
+        "analyzer.py에",
+        "llm-provider",
+        "llama-4-scout-17b-16e-instruct",
+        "0.11/m",
+        "detail-max-detail-calls",
+        "analysis-min-chars-to-call-llm"
+      ]
+    }
+  }
+}

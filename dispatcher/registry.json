@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "meta": {
+    "created": "2026-05-17",
+    "last_updated": "2026-05-17",
+    "description": "에이전트 레지스트리 — 모든 에이전트의 메타데이터를 관리",
+    "update_source": "auto_discovery / manual"
+  },
+  "agents": {
+    "hermes": {
+      "name": "Hermes",
+      "description": "고급 분석, 이미지 PDF 처리, 추론, Second Brain 기록 — 더 똑똑한 모델(v4 pro)로 복잡한 작업 전담",
+      "enabled": true,
+      "endpoint": {
+        "type": "http",
+        "url": "http://localhost:8000/chat",
+        "method": "POST",
+        "health_check": "http://localhost:8000/health"
+      },
+      "capabilities": [
+        "analysis",
+        "image_processing",
+        "reasoning",
+        "documentation",
+        "memory_write",
+        "complex_reasoning",
+        "second_brain_classification",
+        "batch_processing",
+        "content_summarization"
+      ],
+      "timeout_ms": 300000,
+      "retry": {
+        "max_attempts": 3,
+        "backoff": "exponential",
+        "initial_delay_ms": 1000,
+        "max_delay_ms": 30000
+      },
+      "circuit_breaker": {
+        "failure_threshold": 5,
+        "cooldown_ms": 30000,
+        "half_open_max_requests": 3
+      },
+      "fallback": {
+        "strategy": "skip_with_warning",
+        "alternatives": ["direct"]
+      },
+      "model_info": {
+        "provider": "opencode-go",
+        "model": "deepseek-v4-pro"
+      }
+    },
+    "metagpt": {
+      "name": "AI-Factory MetaGPT",
+      "description": "기획, 설계, 코드 생성, QA — AI Software Factory",
+      "enabled": true,
+      "context_hint": "[회사 지식 베이스] /knowledge/ 경로에 프로젝트 문서, 아키텍처 결정, 스킬 가이드가 읽기 전용으로 마운트되어 있습니다. 작업 전에 관련 문서를 확인하고 참고하세요. (예: ls /knowledge/10_Wiki/Projects/, ls /knowledge/10_Wiki/Decisions/, ls /knowledge/10_Wiki/Skills/)",
+      "endpoint": {
+        "type": "docker_exec",
+        "container": "aifactory-metagpt",
+        "workdir": "/app",
+        "shell": "/bin/bash"
+      },
+      "capabilities": [
+        "planning",
+        "architecture",
+        "code_generation",
+        "qa",
+        "project_design"
+      ],
+      "timeout_ms": 300000,
+      "retry": {
+        "max_attempts": 2,
+        "backoff": "linear",
+        "initial_delay_ms": 5000
+      },
+      "circuit_breaker": {
+        "failure_threshold": 3,
+        "cooldown_ms": 60000,
+        "half_open_max_requests": 2
+      },
+      "fallback": {
+        "strategy": "notify_user",
+        "alternatives": ["ejclaw"]
+      },
+      "model_info": {
+        "provider": "opencode-go",
+        "model": "deepseek-v4-pro"
+      }
+    },
+    "ejclaw": {
+      "name": "AI-Factory EJClaw",
+      "description": "코드 리뷰, 버그 수정, 구현, 심사",
+      "enabled": true,
+      "context_hint": "[회사 지식 베이스] /knowledge/ 경로에 프로젝트 문서, 아키텍처 결정, 스킬 가이드가 읽기 전용으로 마운트되어 있습니다. 작업 전에 관련 문서를 확인하고 참고하세요. (예: ls /knowledge/10_Wiki/Projects/, ls /knowledge/10_Wiki/Decisions/, ls /knowledge/10_Wiki/Skills/)",
+      "endpoint": {
+        "type": "docker_exec",
+        "container": "aifactory-ejclaw",
+        "workdir": "/app",
+        "shell": "/bin/bash"
+      },
+      "capabilities": [
+        "code_review",
+        "bug_fix",
+        "implementation",
+        "code_audit"
+      ],
+      "timeout_ms": 300000,
+      "retry": {
+        "max_attempts": 2,
+        "backoff": "linear",
+        "initial_delay_ms": 5000
+      },
+      "circuit_breaker": {
+        "failure_threshold": 3,
+        "cooldown_ms": 60000,
+        "half_open_max_requests": 2
+      },
+      "fallback": {
+        "strategy": "notify_user",
+        "alternatives": ["hermes"]
+      },
+      "model_info": {
+        "provider": "opencode-go",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    "tradingagent": {
+      "name": "Auto Trading Agent",
+      "description": "AI 멀티에이전트 자동매매 파이프라인 (LangGraph, GitHub Copilot, 국내주식)",
+      "enabled": true,
+      "endpoint": {
+        "type": "docker_exec",
+        "container": "auto-trading",
+        "workdir": "/app",
+        "shell": "/bin/bash"
+      },
+      "capabilities": [
+        "trading",
+        "finance",
+        "portfolio_management",
+        "market_analysis",
+        "technical_analysis",
+        "sentiment_analysis",
+        "risk_management",
+        "kr_stock"
+      ],
+      "timeout_ms": 600000,
+      "retry": {
+        "max_attempts": 2,
+        "backoff": "linear",
+        "initial_delay_ms": 5000
+      },
+      "circuit_breaker": {
+        "failure_threshold": 3,
+        "cooldown_ms": 60000,
+        "half_open_max_requests": 2
+      },
+      "fallback": {
+        "strategy": "notify_user",
+        "alternatives": ["hermes"]
+      },
+      "model_info": {
+        "provider": "github-copilot",
+        "model": "gpt-5-mini-high / gpt-4.1 / gpt-5.4-mini-high"
+      }
+    }
+  }
+}

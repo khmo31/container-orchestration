@@ -1,0 +1,62 @@
+services:
+  # =============================================
+  # MetaGPT — PM / Architect
+  # Provider: Copilot Edu Pro (GitHub Token)
+  # Model: GPT-5.4-mini-high
+  # =============================================
+  metagpt:
+    build:
+      context: .
+      dockerfile: docker/metagpt/Dockerfile
+    container_name: aifactory-metagpt
+    hostname: metagpt
+    volumes:
+      - workspace-data:/workspace
+      - metagpt-cache:/root/.cache
+      - ./config/metagpt:/config
+    networks:
+      - aifactory-net
+    environment:
+      # OpenCode Go (OpenAI 호환 API, MetaGPT도 사용)
+      - METAGPT_LLM_API_KEY=${OPENCODE_GO_KEY:?err}
+      - METAGPT_LLM_MODEL=${METAGPT_MODEL:-deepseek-v4-pro}
+      - METAGPT_LLM_BASE_URL=${METAGPT_BASE_URL:-https://opencode.ai/zen/go/v1}
+      # GitHub Token (추후 Models API 권한 추가시 활성화)
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+    restart: unless-stopped
+
+  # =============================================
+  # EJClaw — Owner/Reviewer/Arbiter
+  # Provider: OpenCode Go
+  #   Owner = GLM-5.1, Reviewer = Qwen3.6 Plus, Arbiter = Kimi K2.6
+  # =============================================
+  ejclaw:
+    build:
+      context: .
+      dockerfile: docker/ejclaw/Dockerfile
+    container_name: aifactory-ejclaw
+    hostname: ejclaw
+    volumes:
+      - workspace-data:/workspace
+      - ejclaw-data:/data
+      - ./config/ejclaw:/ejclaw/config
+    networks:
+      - aifactory-net
+    depends_on:
+      - metagpt
+    environment:
+      # OpenCode Go
+      - OPENCODE_GO_KEY=${OPENCODE_GO_KEY:?err}
+      - OPENAI_BASE_URL=https://opencode.ai/zen/go/v1
+      - CODEX_DEFAULT_MODEL=glm-5.1
+      - EJCLAW_RUNNER_TIMEOUT=${EJCLAW_TIMEOUT:-600000}
+    restart: unless-stopped
+
+volumes:
+  workspace-data:
+  metagpt-cache:
+  ejclaw-data:
+
+networks:
+  aifactory-net:
+    driver: bridge

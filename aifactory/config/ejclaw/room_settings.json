@@ -1,0 +1,38 @@
+{
+  "paired": {
+    "ownerAgentType": "codex",
+    "reviewerAgentType": "codex",
+    "arbiterAgentType": "codex",
+    "maxRoundTrips": 5,
+    "arbiterDeadlockThreshold": 2,
+    "carryForwardLatestOwnerFinal": true,
+    "agentLanguage": "korean"
+  },
+  "models": {
+    "owner": {
+      "model": "glm-5.1",
+      "effort": "high",
+      "fallbackEnabled": true
+    },
+    "reviewer": {
+      "model": "qwen3.6-plus",
+      "effort": "high",
+      "fallbackEnabled": true
+    },
+    "arbiter": {
+      "model": "kimi-k2.6",
+      "effort": "high",
+      "fallbackEnabled": true
+    }
+  },
+  "providers": {
+    "codexDefaultModel": "glm-5.1",
+    "codexBaseUrl": "https://opencode.ai/zen/go/v1"
+  },
+  "runtime": {
+    "pollInterval": 3000,
+    "agentTimeout": 300000,
+    "maxConcurrentAgents": 2,
+    "blockedRepeatThreshold": 2
+  }
+}

@@ -1,0 +1,18 @@
+# MetaGPT LLM Configuration
+# Auto-generated from template by entrypoint.sh
+# Provider 1: OpenCode Go (DeepSeek V4 Pro) — Primary
+# Provider 2: Copilot Edu Pro (GPT-5.3-Codex) — Fallback
+
+llm:
+  api_type: "openai"
+  model: "${METAGPT_LLM_MODEL}"
+  base_url: "${METAGPT_LLM_BASE_URL}"
+  api_key: "${METAGPT_LLM_API_KEY}"
+  temperature: 0.0
+  max_token: 16384
+  top_p: 1.0
+  stream: true
+  timeout: 600
+
+repository:
+  path: "/workspace"
