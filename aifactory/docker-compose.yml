@@ -1,8 +1,8 @@
 services:
   # =============================================
-  # MetaGPT — PM / Architect
-  # Provider: Copilot Edu Pro (GitHub Token)
-  # Model: GPT-5.4-mini-high
+  # MetaGPT — PM / Architect / Code Generation
+  # Provider: OpenCode Go
+  # Model: DeepSeek V4 Pro
   # =============================================
   metagpt:
     build:
@@ -17,45 +17,38 @@ services:
     networks:
       - aifactory-net
     environment:
-      # OpenCode Go (OpenAI 호환 API, MetaGPT도 사용)
-      - METAGPT_LLM_API_KEY=${OPENCODE_GO_KEY:?err}
+      - METAGPT_LLM_API_KEY=${OPENCODE_GO_KEY}
       - METAGPT_LLM_MODEL=${METAGPT_MODEL:-deepseek-v4-pro}
       - METAGPT_LLM_BASE_URL=${METAGPT_BASE_URL:-https://opencode.ai/zen/go/v1}
-      # GitHub Token (추후 Models API 권한 추가시 활성화)
-      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
     restart: unless-stopped
 
   # =============================================
-  # EJClaw — Owner/Reviewer/Arbiter
+  # OpenCode — AI Coding Agent (코드 수정/리뷰/테스트)
   # Provider: OpenCode Go
-  #   Owner = GLM-5.1, Reviewer = Qwen3.6 Plus, Arbiter = Kimi K2.6
+  # Web UI: http://localhost:4096
   # =============================================
-  ejclaw:
+  opencode:
     build:
       context: .
-      dockerfile: docker/ejclaw/Dockerfile
-    container_name: aifactory-ejclaw
-    hostname: ejclaw
+      dockerfile: docker/opencode/Dockerfile
+    container_name: aifactory-opencode
+    hostname: opencode
+    ports:
+      - "4096:4096"
     volumes:
       - workspace-data:/workspace
-      - ejclaw-data:/data
-      - ./config/ejclaw:/ejclaw/config
+      - opencode-data:/root/.local/share/opencode
     networks:
       - aifactory-net
-    depends_on:
-      - metagpt
     environment:
-      # OpenCode Go
-      - OPENCODE_GO_KEY=${OPENCODE_GO_KEY:?err}
-      - OPENAI_BASE_URL=https://opencode.ai/zen/go/v1
-      - CODEX_DEFAULT_MODEL=glm-5.1
-      - EJCLAW_RUNNER_TIMEOUT=${EJCLAW_TIMEOUT:-600000}
+      - OPENCODE_GO_KEY=${OPENCODE_GO_KEY}
+      - PORT=4096
     restart: unless-stopped
 
 volumes:
   workspace-data:
   metagpt-cache:
-  ejclaw-data:
+  opencode-data:
 
 networks:
   aifactory-net:

@@ -1,0 +1,16 @@
+[Unit]
+Description=CrewAI Manager — Agent orchestration service
+After=network.target docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+User=khmo31
+WorkingDirectory=/home/khmo31/.openclaw/workspace/crewai-manager
+ExecStart=/home/khmo31/crewai_env/bin/python3 /home/khmo31/.openclaw/workspace/crewai-manager/crewai_service.py
+Restart=on-failure
+RestartSec=5
+Environment=CREWAI_PORT=8001
+
+[Install]
+WantedBy=multi-user.target
